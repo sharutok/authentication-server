@@ -1,3 +1,4 @@
+.env
 # Binaries for programs and plugins
 *.exe
 *.dll
@@ -18,5 +19,3 @@ vendor/
 .idea/
 *.swp
 .DS_Store
-
-.env
