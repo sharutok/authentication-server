@@ -2,6 +2,9 @@ package main
 
 import (
 	"context"
+	"log"
+	"os"
+	"strconv"
 
 	"github.com/go-redis/redis/v8"
 )
@@ -9,10 +12,14 @@ import (
 var ctx = context.Background()
 
 func ConnectToRedis() *redis.Client {
+	i, err := strconv.Atoi(os.Getenv("REDIS_DB"))
+	if err != nil {
+		log.Println(err, "error in db redis")
+	}
 	rdb := redis.NewClient(&redis.Options{
-		Addr:     "localhost:6379",
-		Password: "|*15kVpmmw`[3^}^:O8B&&v/L>QE+7OY7c9?%`VRsAq{,Cyxw{",
-		DB:       0,
+		Addr:     os.Getenv("REDIS_ADDR"),
+		Password: os.Getenv("REDIS_PASSWORD"),
+		DB:       i,
 	})
 
 	return rdb
