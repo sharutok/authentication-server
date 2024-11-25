@@ -17,8 +17,6 @@ func main() {
 	router := gin.Default()
 	godotenv.Load(".env")
 
-	// router.Use(CheckIfAppNameExist)
-
 	router.POST("/get-token/:app", CheckIfAppNameExist, GET_ACCESS_TOKEN)
 	router.POST("/refresh-token/:app", CheckIfAppNameExist, GET_REFRESH_TOKEN)
 	router.POST("/validate-access-token/:app", CheckIfAppNameExist, VALIDATE_ACCESS_TOKEN)
